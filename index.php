@@ -29,8 +29,9 @@
     </a>
 
     <a href="login.php" class="icon-login">
-        <i class="ri-user-line"></i>
-    </a>
+    <i class="ri-user-line"></i> Login
+</a>
+
 </header>
 
 </div>   

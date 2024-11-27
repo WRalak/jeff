@@ -8,14 +8,17 @@ if (!isset($_SESSION['logged_in'])) {
 // Database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
-$database = "your_database";
+$password = ""; // Replace with your root password if set
+$database = "your_database"; // Replace with your actual database name
 
+// Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 
 // Fetch purchased items
 $sql = "SELECT * FROM your_database_table WHERE status = 'purchased'";
