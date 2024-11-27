@@ -97,29 +97,29 @@ table th {
     color: var(--text-color);
 }
 .icon-cart {
-    position: relative; /* Allows positioning of child elements */
-    text-decoration: none; /* Remove underline */
-    color: #333; /* Default color */
-    font-size: 1.5rem; /* Adjust size of the icon */
-    display: inline-block; /* Prevent stacking */
+    position: relative;   
+    text-decoration: none; 
+    color: #333; 
+    font-size: 1.5rem; 
+    display: inline-block; 
 }
 
 .icon-cart i {
-    font-size: 2rem; /* Size of the shopping cart icon */
+    font-size: 2rem; 
 }
 
 .cart-count {
-    position: absolute; /* Position it relative to .icon-cart */
-    top: 1.8rem; /* Adjust to position below the icon */
-    left: 50%; /* Center it horizontally under the icon */
-    transform: translateX(-50%); /* Adjust for perfect centering */
-    font-size: 0.9rem; /* Adjust font size */
-    color: #fff; /* White text */
-    background-color: #ff0000; /* Red background */
-    padding: 2px 8px; /* Add padding for a badge look */
-    border-radius: 12px; /* Rounded corners for the badge */
-    font-weight: bold; /* Make the text bold */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow */
+    position: absolute; 
+    top: 1.8rem; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    font-size: 0.9rem; 
+    color: #fff; 
+    background-color: #ff0000; 
+    padding: 2px 8px; 
+    border-radius: 12px; 
+    font-weight: bold; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
 .icon-login {
