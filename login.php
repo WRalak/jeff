@@ -27,6 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file -->
 </head>
 <body>
+<header>
+    <a href="#" class="logo">BLACK.COLLECTION</a>
+
+    <a href="cart.php" class="icon-cart">
+        <i class="ri-shopping-cart-line"></i>
+        <span>0</span>
+    </a>
+
+    <a href="login.php" class="icon-login">
+    <i class="ri-user-line"></i> Login
+</a>
+
+</header>
     <div class="login-container">
         <h1>Login</h1>
         <?php if (!empty($error)) echo "<p class='error'>$error</p>"; ?>

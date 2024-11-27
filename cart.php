@@ -27,6 +27,19 @@ foreach ($cart_items as $item) {
     <link rel="stylesheet" href="styles.css"> <!-- Include your styles -->
 </head>
 <body>
+<header>
+    <a href="#" class="logo">BLACK.COLLECTION</a>
+
+    <a href="cart.php" class="icon-cart">
+        <i class="ri-shopping-cart-line"></i>
+        <span>0</span>
+    </a>
+
+    <a href="login.php" class="icon-login">
+    <i class="ri-user-line"></i> Login
+</a>
+
+</header>
     <h1>Your Shopping Cart</h1>
     
     <!-- Display cart items -->
