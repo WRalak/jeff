@@ -1,18 +1,20 @@
 <?php
 session_start();
 
-// Retrieve the cart from the session
-$cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+// Check if the cart session is set
+$cart_items = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 
-// Handle item removal
-if (isset($_POST['remove_item'])) {
-    $item_name = $_POST['item_name']; // Get the name of the item to remove
-    foreach ($cart as $key => $item) {
-        if ($item['name'] === $item_name) {
-            unset($cart[$key]); // Remove the item from the cart
-        }
-    }
-    $_SESSION['cart'] = $cart; // Update the session with the modified cart
+// Calculate total cost
+$total = 0;
+
+// Validate cart items and calculate total
+foreach ($cart_items as $item) {
+    // Default quantity to 1 if it is missing
+    $quantity = $item['quantity'] ?? 1;
+    $price = $item['price'] ?? 0;
+
+    // Add to total
+    $total += $price * $quantity;
 }
 ?>
 
@@ -22,56 +24,47 @@ if (isset($_POST['remove_item'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
-    <style>
-        .cart-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .cart-table th, .cart-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        .cart-table th {
-            text-align: left;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your styles -->
 </head>
 <body>
-    <h1>Shopping Cart</h1>
-
-    <?php if (count($cart) > 0): ?>
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($cart as $item): ?>
+    <h1>Your Shopping Cart</h1>
+    
+    <!-- Display cart items -->
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price (per item)</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($cart_items)): ?>
+                <?php foreach ($cart_items as $item): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($item['name']); ?></td>
-                        <td>KSH <?php echo number_format($item['price'], 2); ?></td>
-                        <td>
-                            <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="Product Image" width="50">
-                        </td>
-                        <td>
-                            <!-- Remove item form -->
-                            <form method="POST" style="display:inline;">
-                                <input type="hidden" name="item_name" value="<?php echo htmlspecialchars($item['name']); ?>">
-                                <button type="submit" name="remove_item">Remove</button>
-                            </form>
-                        </td>
+                        <td><?php echo htmlspecialchars($item['name'] ?? 'Unknown Item'); ?></td>
+                        <td><?php echo htmlspecialchars($item['quantity'] ?? 1); ?></td>
+                        <td><?php echo htmlspecialchars(number_format($item['price'] ?? 0, 2)); ?></td>
+                        <td><?php echo htmlspecialchars(number_format(($item['price'] ?? 0) * ($item['quantity'] ?? 1), 2)); ?></td>
                     </tr>
                 <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>Your cart is empty.</p>
-    <?php endif; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="4">Your cart is empty.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><strong>Total</strong></td>
+                <td><strong><?php echo htmlspecialchars(number_format($total, 2)); ?></strong></td>
+            </tr>
+        </tfoot>
+    </table>
 
-    <a href="index.php">Continue Shopping</a>
+    <br>
+    <a href="index.php" class="button">Continue Shopping</a>
+    <a href="checkout.php" class="button">Proceed to Checkout</a>
 </body>
 </html>
