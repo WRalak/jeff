@@ -96,34 +96,32 @@ table th {
     text-transform: uppercase;
     color: var(--text-color);
 }
-.icon-cart span{
-    display: flex;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    justify-content: center;
-    align-items: center;
-    color: var(--bg-color);
-    border-radius: 50%;
-    position: absolute;
-    top: 55%;
-    right: 348px;
+.icon-cart {
+    position: relative; /* Allows positioning of child elements */
+    text-decoration: none; /* Remove underline */
+    color: #333; /* Default color */
+    font-size: 1.5rem; /* Adjust size of the icon */
+    display: inline-block; /* Prevent stacking */
 }
-.icon-cart{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+
+.icon-cart i {
+    font-size: 2rem; /* Size of the shopping cart icon */
 }
-.icon-cart i{
-    display: inline-block;
-    font-size: 22px;
-    color: var(--text-color);
-    margin: 0 20px;
-    transition: all .6s;
+
+.cart-count {
+    position: absolute; /* Position it relative to .icon-cart */
+    top: 1.8rem; /* Adjust to position below the icon */
+    left: 50%; /* Center it horizontally under the icon */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    font-size: 0.9rem; /* Adjust font size */
+    color: #fff; /* White text */
+    background-color: #ff0000; /* Red background */
+    padding: 2px 8px; /* Add padding for a badge look */
+    border-radius: 12px; /* Rounded corners for the badge */
+    font-weight: bold; /* Make the text bold */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a shadow */
 }
-.icon-cart i:hover{
-    transform: translateY(-5px) scale(1.1);
-}
+
 .icon-login {
     display: flex; 
     align-items: center;

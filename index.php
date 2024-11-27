@@ -25,10 +25,11 @@
     <header>
     <a href="#" class="logo">BLACK.COLLECTION</a>
 
-    <a href="cart.php" class="icon-cart">
-        <i class="ri-shopping-cart-line"></i>
-        <span>0</span>
-    </a>
+    <a href="cart.php" class="icon-cart"> 
+    <i class="ri-shopping-cart-line"></i>
+    <span class="cart-count">0</span>
+</a>
+
 
     <a href="login.php" class="icon-login">
     <i class="ri-user-line"></i> Login
